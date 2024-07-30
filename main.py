@@ -6,7 +6,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, Cal
 
 BOT_TOKEN = '7325149894:AAGTxEjEVB5pFuV-kGN_4dEOCdX5GRfsVzo'
 DOWNLOAD_PATH = 'downloads/'
-FFMPEG_PATH = 'C:/ffmpeg-master-latest-win64-gpl/bin/ffmpeg.exe'
+FFMPEG_PATH = '/usr/bin/ffmpeg'
 
 # Create the downloads directory if it does not exist
 if not os.path.exists(DOWNLOAD_PATH):
