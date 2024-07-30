@@ -20,22 +20,18 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text('Welcome! Send me a YouTube link, and I will download the video for you.')
 
 def choose_resolution(resolution):
-    if resolution in ["low", "360", "360p"]:
-        itag = '18'
-    elif resolution in ["medium", "720", "720p", "hd"]:
-        itag = '22'
-    elif resolution in ["high", "1080", "1080p", "fullhd", "full_hd", "full hd"]:
-        itag = '137'
-    elif resolution in ["very high", "2160", "2160p", "4K", "4k"]:
-        itag = '313'
-    else:
-        itag = '18'
-    return itag
+    resolutions = {
+        "low": 360,
+        "medium": 720,
+        "high": 1080,
+        "very high": 2160
+    }
+    return resolutions.get(resolution, 720)
 
 def download_video(url, resolution):
-    itag = choose_resolution(resolution)
+    height = choose_resolution(resolution)
     ydl_opts = {
-        'format': f'bestvideo[height<={resolution}]+bestaudio/best[height<={resolution}]',
+        'format': f'bestvideo[height<={height}]+bestaudio/best[height<={height}]',
         'outtmpl': os.path.join(DOWNLOAD_PATH, '%(title)s.%(ext)s'),
         'cookies': COOKIES_FILE,
     }
