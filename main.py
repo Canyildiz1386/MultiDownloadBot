@@ -177,7 +177,7 @@ async def audio_format_button(update: Update, context: ContextTypes.DEFAULT_TYPE
         await query.message.reply_text('✅ The video has been successfully downloaded and merged!')
 
 def main() -> None:
-    application = ApplicationBuilder().token("YOUR_TELEGRAM_BOT_TOKEN").build()
+    application = ApplicationBuilder().token("7325149894:AAGTxEjEVB5pFuV-kGN_4dEOCdX5GRfsVzo").build()
 
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CallbackQueryHandler(button, pattern='^(fa|en)$'))
