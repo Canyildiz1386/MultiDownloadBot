@@ -49,7 +49,7 @@ def list_formats(url):
         'listformats': True,
         'quiet': True,
         'no_warnings': True,
-        'cookiefile': 'cookies.txt'  # Add cookies to bypass sign-in requirements
+        'cookies': 'cookies.txt',  # مسیر به فایل cookies.txt
     }
     with YoutubeDL(ydl_opts) as ydl:
         info_dict = ydl.extract_info(url, download=False)
@@ -62,14 +62,14 @@ def download_video_audio_separately(url, video_output_path, audio_output_path, v
         'outtmpl': video_output_path,
         'quiet': True,
         'no_warnings': True,
-        'cookiefile': 'cookies.txt'  # Add cookies to bypass sign-in requirements
+        'cookies': 'cookies.txt',  # مسیر به فایل cookies.txt
     }
     ydl_opts_audio = {
         'format': audio_format,
         'outtmpl': audio_output_path,
         'quiet': True,
         'no_warnings': True,
-        'cookiefile': 'cookies.txt'  # Add cookies to bypass sign-in requirements
+        'cookies': 'cookies.txt',  # مسیر به فایل cookies.txt
     }
     with YoutubeDL(ydl_opts_video) as ydl:
         ydl.download([url])
@@ -177,7 +177,7 @@ async def audio_format_button(update: Update, context: ContextTypes.DEFAULT_TYPE
         await query.message.reply_text('✅ The video has been successfully downloaded and merged!')
 
 def main() -> None:
-    application = ApplicationBuilder().token("7325149894:AAGTxEjEVB5pFuV-kGN_4dEOCdX5GRfsVzo").build()
+    application = ApplicationBuilder().token("YOUR_TELEGRAM_BOT_TOKEN").build()
 
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CallbackQueryHandler(button, pattern='^(fa|en)$'))
